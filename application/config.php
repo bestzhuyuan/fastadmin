@@ -201,6 +201,7 @@ return [
         'type'           => '',
         // 是否自动开启 SESSION
         'auto_start'     => true,
+        //'cache_limiter'=>''
     ],
     // +----------------------------------------------------------------------
     // | Cookie设置
@@ -231,6 +232,8 @@ return [
     'captcha'                => [
         // 验证码字符集合
         'codeSet'  => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',
+        // 验证码过期时间（s）
+        'expire'   => 600,
         // 验证码字体大小(px)
         'fontSize' => 18,
         // 是否画混淆曲线
@@ -264,7 +267,17 @@ return [
         //是否开启前台会员中心
         'usercenter'            => true,
         //会员注册验证码类型email/mobile/wechat/text/false
-        'user_register_captcha' => 'text',
+        'user_register_captcha' => 'mobile',
+        //是否启用发送前验证码(用于短信和邮件发送)
+        'user_api_captcha'      => true,
+        //会员主页URL规则
+        'user_home_url'         => '/u/{uid}',
+        //是否启用会员字母头像
+        'user_letter_avatar'    => true,
+        //是否启用会员等级规则none/auto/up
+        'user_level_rule'       => '',
+        //会员等级积分字典
+        'user_level_dict'       => [1 => 0, 2 => 30, 3 => 100, 4 => 500, 5 => 1000, 6 => 2000, 7 => 3000, 8 => 5000, 9 => 8000, 10 => 10000],
         //登录验证码
         'login_captcha'         => true,
         //登录失败超过10次则1天后重试
@@ -275,6 +288,8 @@ return [
         'loginip_check'         => true,
         //登录页默认背景图
         'login_background'      => "",
+        //是否启用简洁导航
+        'simplenav'             => true,
         //是否启用多级菜单导航
         'multiplenav'           => false,
         //是否开启多选项卡(仅在开启多级菜单时起作用)
@@ -296,7 +311,7 @@ return [
         //允许跨域的域名,多个以,分隔
         'cors_request_domain'   => 'localhost,127.0.0.1',
         //版本号
-        'version'               => '1.3.4.20220530',
+        'version'               => '1.4.0.20230315',
         //API接口地址
         'api_url'               => 'https://api.fastadmin.net',
     ],

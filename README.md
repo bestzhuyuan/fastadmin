@@ -29,7 +29,7 @@ FastAdmin是一款基于ThinkPHP+Bootstrap的极速后台开发框架。
 * 第三方小程序支持([CMS小程序](https://www.fastadmin.net/store/cms.html)、[预订小程序](https://www.fastadmin.net/store/ball.html)、[问答小程序](https://www.fastadmin.net/store/ask.html)、[点餐小程序](https://www.fastadmin.net/store/unidrink.html)、[B2C小程序](https://www.fastadmin.net/store/shopro.html)、[B2B2C小程序](https://www.fastadmin.net/store/wanlshop.html)、[博客小程序](https://www.fastadmin.net/store/blog.html))
 * 整合第三方短信接口(阿里云、腾讯云短信)
 * 无缝整合第三方云存储(七牛云、阿里云OSS、又拍云)功能，支持云储存分片上传
-* 第三方富文本编辑器支持(Summernote、Kindeditor、百度编辑器)
+* 第三方富文本编辑器支持(Summernote、百度编辑器)
 * 第三方登录(QQ、微信、微博)整合
 * 第三方支付(微信、支付宝)无缝整合，微信支持PC端扫码支付
 * 丰富的插件应用市场
@@ -55,9 +55,7 @@ https://demo.fastadmin.net
 
 在使用中有任何问题，请使用以下联系方式联系我们
 
-交流社区: https://ask.fastadmin.net
-
-QQ群: [636393962](https://jq.qq.com/?_wv=1027&k=487PNBb)(满) [708784003](https://jq.qq.com/?_wv=1027&k=5ObjtwM)(满) [964776039](https://jq.qq.com/?_wv=1027&k=59qjU2P)(3群) [749803490](https://jq.qq.com/?_wv=1027&k=5tczi88)(满) [767103006](https://jq.qq.com/?_wv=1027&k=5Z1U751)(满) [675115483](https://jq.qq.com/?_wv=1027&k=54I6mts)(6群)
+问答社区: https://ask.fastadmin.net
 
 Github: https://github.com/karsonzhang/fastadmin
 
@@ -81,7 +79,7 @@ Nice-validator: https://validator.niceue.com
 
 SelectPage: https://github.com/TerryZ/SelectPage
 
-Layer: https://layer.layui.com
+Layer: https://layuion.com/layer/
 
 DropzoneJS: https://www.dropzonejs.com
 
@@ -92,6 +90,6 @@ FastAdmin遵循Apache2开源协议发布，并提供免费使用。
 
 本项目包含的第三方源码和二进制文件之版权信息另行标注。
 
-版权所有Copyright © 2017-2022 by FastAdmin (https://www.fastadmin.net)
+版权所有Copyright © 2017-2023 by FastAdmin (https://www.fastadmin.net)
 
 All rights reserved。

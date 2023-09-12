@@ -1,6 +1,6 @@
 /*
  FastAdmin Install SQL
- Date: 2020-06-11 22:11:09
+ Date: 2023-06-07 15:17:57
 */
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -8,7 +8,6 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for fa_admin
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_admin`;
 CREATE TABLE `fa_admin` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `username` varchar(20) DEFAULT '' COMMENT '用户名',
@@ -27,7 +26,7 @@ CREATE TABLE `fa_admin` (
   `status` varchar(30) NOT NULL DEFAULT 'normal' COMMENT '状态',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='管理员表';
 
 -- ----------------------------
 -- Records of fa_admin
@@ -39,7 +38,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_admin_log
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_admin_log`;
 CREATE TABLE `fa_admin_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `admin_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '管理员ID',
@@ -52,12 +50,11 @@ CREATE TABLE `fa_admin_log` (
   `createtime` bigint(16) DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`id`),
   KEY `name` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='管理员日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='管理员日志表';
 
 -- ----------------------------
 -- Table structure for fa_area
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_area`;
 CREATE TABLE `fa_area` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `pid` int(10) DEFAULT NULL COMMENT '父id',
@@ -73,12 +70,11 @@ CREATE TABLE `fa_area` (
   `lat` varchar(100) DEFAULT NULL COMMENT '纬度',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='地区表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='地区表';
 
 -- ----------------------------
 -- Table structure for fa_attachment
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_attachment`;
 CREATE TABLE `fa_attachment` (
   `id` int(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `category` varchar(50) DEFAULT '' COMMENT '类别',
@@ -99,7 +95,7 @@ CREATE TABLE `fa_attachment` (
   `storage` varchar(100) NOT NULL DEFAULT 'local' COMMENT '存储位置',
   `sha1` varchar(40) DEFAULT '' COMMENT '文件 sha1编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='附件表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='附件表';
 
 -- ----------------------------
 -- Records of fa_attachment
@@ -111,7 +107,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_auth_group
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_auth_group`;
 CREATE TABLE `fa_auth_group` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父组别',
@@ -121,7 +116,7 @@ CREATE TABLE `fa_auth_group` (
   `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
   `status` varchar(30) DEFAULT '' COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='分组表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='分组表';
 
 -- ----------------------------
 -- Records of fa_auth_group
@@ -137,14 +132,13 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_auth_group_access
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_auth_group_access`;
 CREATE TABLE `fa_auth_group_access` (
   `uid` int(10) unsigned NOT NULL COMMENT '会员ID',
   `group_id` int(10) unsigned NOT NULL COMMENT '级别ID',
   UNIQUE KEY `uid_group_id` (`uid`,`group_id`),
   KEY `uid` (`uid`),
   KEY `group_id` (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='权限分组表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='权限分组表';
 
 -- ----------------------------
 -- Records of fa_auth_group_access
@@ -156,7 +150,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_auth_rule
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_auth_rule`;
 CREATE TABLE `fa_auth_rule` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` enum('menu','file') NOT NULL DEFAULT 'file' COMMENT 'menu为菜单,file为权限节点',
@@ -180,7 +173,7 @@ CREATE TABLE `fa_auth_rule` (
   UNIQUE KEY `name` (`name`) USING BTREE,
   KEY `pid` (`pid`),
   KEY `weigh` (`weigh`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='节点表';
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='节点表';
 
 -- ----------------------------
 -- Records of fa_auth_rule
@@ -273,7 +266,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_category
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_category`;
 CREATE TABLE `fa_category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父ID',
@@ -292,7 +284,7 @@ CREATE TABLE `fa_category` (
   PRIMARY KEY (`id`),
   KEY `weigh` (`weigh`,`id`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='分类表';
 
 -- ----------------------------
 -- Records of fa_category
@@ -316,7 +308,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_config
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_config`;
 CREATE TABLE `fa_config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT '' COMMENT '变量名',
@@ -332,7 +323,7 @@ CREATE TABLE `fa_config` (
   `setting` varchar(255) DEFAULT '' COMMENT '配置',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='系统配置';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='系统配置';
 
 -- ----------------------------
 -- Records of fa_config
@@ -361,7 +352,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_ems
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_ems`;
 CREATE TABLE `fa_ems`  (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `event` varchar(30) DEFAULT '' COMMENT '事件',
@@ -371,12 +361,11 @@ CREATE TABLE `fa_ems`  (
   `ip` varchar(30) DEFAULT '' COMMENT 'IP',
   `createtime` bigint(16) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='邮箱验证码表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='邮箱验证码表';
 
 -- ----------------------------
 -- Table structure for fa_sms
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_sms`;
 CREATE TABLE `fa_sms` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `event` varchar(30) DEFAULT '' COMMENT '事件',
@@ -386,12 +375,11 @@ CREATE TABLE `fa_sms` (
   `ip` varchar(30) DEFAULT '' COMMENT 'IP',
   `createtime` bigint(16) unsigned DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='短信验证码表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='短信验证码表';
 
 -- ----------------------------
 -- Table structure for fa_test
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_test`;
 CREATE TABLE `fa_test` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `user_id` int(10) DEFAULT '0' COMMENT '会员ID',
@@ -429,7 +417,7 @@ CREATE TABLE `fa_test` (
   `status` enum('normal','hidden') DEFAULT 'normal' COMMENT '状态',
   `state` enum('0','1','2') DEFAULT '1' COMMENT '状态值:0=禁用,1=正常,2=推荐',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='测试表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='测试表';
 
 -- ----------------------------
 -- Records of fa_test
@@ -441,7 +429,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_user
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_user`;
 CREATE TABLE `fa_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '组别ID',
@@ -475,7 +462,7 @@ CREATE TABLE `fa_user` (
   KEY `username` (`username`),
   KEY `email` (`email`),
   KEY `mobile` (`mobile`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='会员表';
 
 -- ----------------------------
 -- Records of fa_user
@@ -487,7 +474,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_user_group
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_user_group`;
 CREATE TABLE `fa_user_group` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT '' COMMENT '组名',
@@ -496,7 +482,7 @@ CREATE TABLE `fa_user_group` (
   `updatetime` bigint(16) DEFAULT NULL COMMENT '更新时间',
   `status` enum('normal','hidden') DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='会员组表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='会员组表';
 
 -- ----------------------------
 -- Records of fa_user_group
@@ -508,7 +494,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_user_money_log
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_user_money_log`;
 CREATE TABLE `fa_user_money_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '会员ID',
@@ -518,12 +503,11 @@ CREATE TABLE `fa_user_money_log` (
   `memo` varchar(255) DEFAULT '' COMMENT '备注',
   `createtime` bigint(16) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='会员余额变动表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='会员余额变动表';
 
 -- ----------------------------
 -- Table structure for fa_user_rule
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_user_rule`;
 CREATE TABLE `fa_user_rule` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) DEFAULT NULL COMMENT '父ID',
@@ -536,7 +520,7 @@ CREATE TABLE `fa_user_rule` (
   `weigh` int(10) DEFAULT '0' COMMENT '权重',
   `status` enum('normal','hidden') DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='会员规则表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='会员规则表';
 
 -- ----------------------------
 -- Records of fa_user_rule
@@ -559,7 +543,6 @@ COMMIT;
 -- ----------------------------
 -- Table structure for fa_user_score_log
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_user_score_log`;
 CREATE TABLE `fa_user_score_log` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '会员ID',
@@ -569,24 +552,22 @@ CREATE TABLE `fa_user_score_log` (
   `memo` varchar(255) DEFAULT '' COMMENT '备注',
   `createtime` bigint(16) DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='会员积分变动表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='会员积分变动表';
 
 -- ----------------------------
 -- Table structure for fa_user_token
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_user_token`;
 CREATE TABLE `fa_user_token` (
   `token` varchar(50) NOT NULL COMMENT 'Token',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '会员ID',
   `createtime` bigint(16) DEFAULT NULL COMMENT '创建时间',
   `expiretime` bigint(16) DEFAULT NULL COMMENT '过期时间',
   PRIMARY KEY (`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='会员Token表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='会员Token表';
 
 -- ----------------------------
 -- Table structure for fa_version
 -- ----------------------------
-DROP TABLE IF EXISTS `fa_version`;
 CREATE TABLE `fa_version`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `oldversion` varchar(30) DEFAULT '' COMMENT '旧版本号',
@@ -600,6 +581,6 @@ CREATE TABLE `fa_version`  (
   `weigh` int(10) NOT NULL DEFAULT 0 COMMENT '权重',
   `status` varchar(30) DEFAULT '' COMMENT '状态',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT='版本表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT='版本表';
 
 SET FOREIGN_KEY_CHECKS = 1;

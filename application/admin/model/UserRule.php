@@ -28,6 +28,11 @@ class UserRule extends Model
         });
     }
 
+    public function getTitleAttr($value, $data)
+    {
+        return __($value);
+    }
+
     public function getStatusList()
     {
         return ['normal' => __('Normal'), 'hidden' => __('Hidden')];
@@ -37,7 +42,7 @@ class UserRule extends Model
     {
         $value = $value ? $value : $data['status'];
         $list = $this->getStatusList();
-        return isset($list[$value]) ? $list[$value] : '';
+        return $list[$value] ?? '';
     }
 
     public static function getTreeList($selected = [])
